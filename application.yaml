@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gnn-mlops
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/GerardTho/application-deployment.git
+    targetRevision: main
+    path: deployment
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: user-tgerard
+  syncPolicy:
+    automated:
+      selfHeal: true
